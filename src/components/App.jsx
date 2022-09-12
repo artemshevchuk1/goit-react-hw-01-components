@@ -1,5 +1,5 @@
-import Profile from './Profile.js';
-import user from './user.json';
+import { Profile } from 'components/Profile/Profile';
+import user from 'components/user.json';
 
 export const App = () => {
   return (
@@ -13,6 +13,7 @@ export const App = () => {
         color: '#010101',
       }}
     >
+      <div>
       <Profile
         username={user.username}
         tag={user.tag}
@@ -22,6 +23,8 @@ export const App = () => {
         statsViews={user.stats.views}
         statsLikes={user.stats.likes}
       />
+      </div>
+      
     </div>
   );
 };
