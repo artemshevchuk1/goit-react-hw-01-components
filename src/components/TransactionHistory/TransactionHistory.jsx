@@ -1,35 +1,42 @@
-import css from './TransactionHistory.module.css';
 import PropTypes from 'prop-types';
+import {
+  TranscriptionHeader,
+  TransactionHistory,
+  TransactionInit,
+  TransactionTableRow,
+  TransactionTableData,
+  TransactionTableHeader,
+} from './TransactionHistory.styled';
 
-export const TransactionHistory = ({items}) => {
+export const TransactionHistoryTable = ({ items }) => {
   return (
-    <table className={css.transactionHistory}>
-      <thead className={css.transcriptionHeader}>
-        <tr>
-          <th>Type</th>
-          <th>Amount</th>
-          <th>Currency</th>
-        </tr>
-      </thead>
+    <TransactionHistory>
+      <TranscriptionHeader>
+        <TransactionTableRow>
+          <TransactionTableHeader>Type</TransactionTableHeader>
+          <TransactionTableHeader>Amount</TransactionTableHeader>
+          <TransactionTableHeader>Currency</TransactionTableHeader>
+        </TransactionTableRow>
+      </TranscriptionHeader>
       {items.map(item => (
-        <tbody key={item.id} className={css.transactionInit}>
-          <tr>
-            <td>{item.type}</td>
-            <td>{item.amount}</td>
-            <td>{item.currency}</td>
-          </tr>
-        </tbody>
+        <TransactionInit key={item.id}>
+          <TransactionTableRow>
+            <TransactionTableData>{item.type}</TransactionTableData>
+            <TransactionTableData>{item.amount}</TransactionTableData>
+            <TransactionTableData>{item.currency}</TransactionTableData>
+          </TransactionTableRow>
+        </TransactionInit>
       ))}
-    </table>
+    </TransactionHistory>
   );
 };
-TransactionHistory.propTypes = {
-    friends: PropTypes.arrayOf (
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            type: PropTypes.string.isRequired,
-            amount: PropTypes.number.isRequired,
-            currency: PropTypes.string.isRequired,
-        })
-    ),
-}
+TransactionHistoryTable.propTypes = {
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+      currency: PropTypes.string.isRequired,
+    })
+  ),
+};

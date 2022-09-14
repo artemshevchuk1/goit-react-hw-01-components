@@ -1,7 +1,19 @@
-import css from 'components/Profile/Profile.module.css';
 import PropTypes from 'prop-types';
+import {
+  Profile,
+  Description,
+  Avatar,
+  Name,
+  Tag,
+  Location,
+  Stats,
+  StatsFollowers,
+  StatsViews,
+  StatsLikes,
+  StatsItem,
+} from './Profile.styled';
 
-export const Profile = ({
+export const ProfileCard = ({
   username,
   tag,
   location,
@@ -11,33 +23,33 @@ export const Profile = ({
   statsLikes,
 }) => {
   return (
-    <div className={css.profile}>
-      <div className={css.description}>
-        <img src={avatar} alt="User avatar" className={css.avatar} />
-        <p className={css.name}>{username}</p>
-        <p className={css.tag}>{tag}</p>
-        <p className={css.location}>{location}</p>
-      </div>
+    <Profile>
+      <Description>
+        <Avatar src={avatar} alt="User avatar" />
+        <Name>{username}</Name>
+        <Tag>{tag}</Tag>
+        <Location>{location}</Location>
+      </Description>
 
-      <ul className={css.stats}>
-        <li>
-          <span className={css.statsFollowers}>Followers</span>
-          <span className={css.statsFollowers}>{statsFollowers}</span>
-        </li>
-        <li>
-          <span className={css.statsViews}>Views</span>
-          <span className={css.statsFollowers}>{statsViews}</span>
-        </li>
-        <li>
-          <span className={css.statsLikes}>Likes</span>
-          <span className={css.statsFollowers}>{statsLikes}</span>
-        </li>
-      </ul>
-    </div>
+      <Stats>
+        <StatsItem>
+          <StatsFollowers>Followers</StatsFollowers>
+          <StatsFollowers>{statsFollowers}</StatsFollowers>
+        </StatsItem>
+        <StatsItem>
+          <StatsViews>Views</StatsViews>
+          <StatsFollowers>{statsViews}</StatsFollowers>
+        </StatsItem>
+        <StatsItem>
+          <StatsLikes>Likes</StatsLikes>
+          <StatsFollowers>{statsLikes}</StatsFollowers>
+        </StatsItem>
+      </Stats>
+    </Profile>
   );
 };
 
-Profile.propTypes = {
+ProfileCard.propTypes = {
   username: PropTypes.string.isRequired,
   tag: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
